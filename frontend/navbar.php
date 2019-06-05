@@ -7,7 +7,7 @@
     if($url=='http://localhost/projeto_final_lp1/' || $url=='http://localhost/projeto_final_lp1/index.php'){
       $active1='active';
     } 
-    elseif($url=='http://localhost/projeto_final_lp1/admin.php'){
+    elseif($url=='http://localhost/projeto_final_lp1/admin.php' || $url=='http://localhost/projeto_final_lp1/admin.php?opc=cadastrar' || $url=='http://localhost/projeto_final_lp1/admin.php?opc=editar'){
       $active2='active';
     }
   ?>
@@ -16,7 +16,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark elegant-color">
 
     <!-- Navbar brand -->
-     <a class="navbar-brand" href=""><i class="fa fa-car"> </i> Alugue Super Carros</a>
+     <a class="navbar-brand" href="index.php"><i class="fa fa-car"> </i> Alugue Super Carros</a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
