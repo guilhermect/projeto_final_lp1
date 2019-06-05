@@ -1,12 +1,22 @@
   <?php
-    $active='active';
+    $active1='';
+    $active2='';
+
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+    if($url=='http://localhost/projeto_final_lp1/' || $url=='http://localhost/projeto_final_lp1/index.php'){
+      $active1='active';
+    } 
+    elseif($url=='http://localhost/projeto_final_lp1/admin.php'){
+      $active2='active';
+    }
   ?>
 
   <!--Navbar-->
   <nav class="navbar navbar-expand-lg navbar-dark elegant-color">
 
     <!-- Navbar brand -->
-     <a class="navbar-brand" href="#"><i class="fa fa-car"> </i> Alugue Super Carros</a>
+     <a class="navbar-brand" href=""><i class="fa fa-car"> </i> Alugue Super Carros</a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -19,11 +29,11 @@
 
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item <?php echo $active ?>">
+        <li class="nav-item <?php echo $active1 ?>">
           <a class="nav-link" href="index.php">Início
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <?php echo $active2 ?>">
           <a class="nav-link" href="admin.php">Administração</a>
         </li>
       
