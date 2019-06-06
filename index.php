@@ -1,6 +1,7 @@
   <?php 
     include_once 'frontend/header.php';
     include_once 'frontend/navbar.php';
+    include_once 'DB.php';
   ?>
 
   <!-- Start your project here-->
@@ -71,14 +72,30 @@
         <h3> Confira nossos carros </h3>
         <hr>
 
+
         <div class="card-deck">
 
+          <?php
+            $tabela = funSelect('carros', '*', '');
+
+            for($i=0; $i<count($tabela); $i++){
+
+              $imagem=$tabela[$i]['imagem'];
+              $marca=$tabela[$i]['marca'];
+              $modelo=$tabela[$i]['modelo'];
+              $ano=$tabela[$i]['ano'];
+              $cor=$tabela[$i]['cor'];
+              $cambio=$tabela[$i]['cambio'];
+              $valor_diaria=$tabela[$i]['valor_diaria'];
+              $id=$tabela[$i]['id'];
+          ?>
+
           <!-- Card -->
           <div class="card mb-4">
 
             <!--Card image-->
             <div class="view overlay">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+              <img class="card-img-top" src="<?php echo $imagem ?>" alt="Card image cap">
               <a href="#!">
                 <div class="mask rgba-white-slight"></div>
               </a>
@@ -88,68 +105,78 @@
             <div class="card-body">
 
               <!--Title-->
-              <h4 class="card-title">Card title</h4>
+              <h4 class="card-title"><?php echo $marca.' '.$modelo ?></h4>
               <!--Text-->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             
               <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-              <button type="button" class="btn btn-light-blue btn-md">Read more</button>
+              <button type="button" data-toggle="modal" data-target="#modalDetalhar<?php echo $i?>" class="btn btn-light-blue btn-md"><i class="fa fa-eye"></i> Detalhar</button>
 
             </div>
-
           </div>
           <!-- Card -->
 
-          <!-- Card -->
-          <div class="card mb-4">
+          <!-- Modal Detalhar -->
+            <div class="modal fade" id="modalDetalhar<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <!--Card image-->
-            <div class="view overlay">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
+              <div class="modal-dialog modal-lg" role="document">
+
+
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title w-100" id="myModalLabel">Detalhar Carro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <!-- Card -->
+                    <div class="card card-cascade wider reverse">
+
+                      <!-- Card image -->
+                      <div class="view view-cascade overlay">
+                        <img class="card-img-top mt-2" src="<?php echo $imagem ?>" style="width: 70%;margin: 0 auto;" alt="Card image cap">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                      </div>
+
+                      <!-- Card content -->
+                      <div class="card-body card-body-cascade text-center">
+
+                        <!-- Title -->
+                        <h4 class="card-title"><strong><?php echo $marca ?></strong></h4>
+                        <!-- Subtitle -->
+                        <h6 class="font-weight-bold indigo-text py-2"><?php echo $modelo ?></h6>
+                        <!-- Text -->
+                        <p class="card-text">
+                          <strong>Ano: </strong> <?php echo $ano ?>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <strong>Cor: </strong> <?php echo $cor ?>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <strong>Câmbio: </strong> <?php echo $cambio ?>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <strong>Valor da Diária: </strong> R$ <?php echo $valor_diaria ?>
+                        </p>
+
+                        
+
+                      </div>
+
+                    </div>
+                    <!-- Card -->
+   
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!--Card content-->
-            <div class="card-body">
-
-              <!--Title-->
-              <h4 class="card-title">Card title</h4>
-              <!--Text-->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-              <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
-            </div>
-
-          </div>
-          <!-- Card -->
-
-          <!-- Card -->
-          <div class="card mb-4">
-
-            <!--Card image-->
-            <div class="view overlay">
-              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!--Card content-->
-            <div class="card-body">
-
-              <!--Title-->
-              <h4 class="card-title">Card title</h4>
-              <!--Text-->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-              <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
-            </div>
-
-          </div>
-          <!-- Card -->
+          <?php
+            }
+          ?>
 
         </div>
         <!-- Card deck -->
