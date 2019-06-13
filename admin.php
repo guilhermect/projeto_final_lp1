@@ -1,7 +1,7 @@
   <?php 
     include_once 'frontend/header.php';
     include_once 'frontend/navbar.php';
-    include_once 'DB.php';
+    include_once 'CRUD.php';
   ?>
 
   <?php
@@ -28,7 +28,7 @@
 
       //echo $valores;
 
-      $insert=funInsert("carros", $campos, $valores);
+      $insert=insert("carros", $campos, $valores);
 
       if($insert){
         echo '<script> swal ( "Inserido com sucesso!" ,  "" ,  "success" ) </script>';
@@ -43,7 +43,7 @@
 
       $argumentos="WHERE id=$id";
 
-      $delete = funDelete('carros', $argumentos);
+      $delete = delete('carros', $argumentos);
 
       if($delete){
         echo '<script> swal ( "Deletado com sucesso!" ,  "" ,  "success" ) </script>';
@@ -70,7 +70,7 @@
 
       //echo $valores;
 
-      $update=funUpdate('carros', $alteracoes, $argumentos);
+      $update=update('carros', $alteracoes, $argumentos);
 
       if($update){
         echo '<script> swal ( "Atualizado com sucesso!" ,  "" ,  "success" ) </script>';
@@ -120,7 +120,7 @@
         <tbody>
 
           <?php
-            $tabela = funSelect('carros', '*', '');
+            $tabela = read('carros', '*', '');
 
             for($i=0; $i<count($tabela); $i++){
 

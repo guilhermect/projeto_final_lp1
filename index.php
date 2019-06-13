@@ -1,7 +1,7 @@
   <?php 
     include_once 'frontend/header.php';
     include_once 'frontend/navbar.php';
-    include_once 'DB.php';
+    include_once 'CRUD.php';
   ?>
 
   <!-- Start your project here-->
@@ -21,7 +21,7 @@
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
             <div class="view">
-              <img class="d-block w-100" height="550" src="img/banner/img1.jpg" 
+              <img class="d-block w-100" height="750" src="img/banner/img1.jpg" 
                 alt="First slide">
               <div class="mask rgba-black-light"></div>
             </div>
@@ -32,7 +32,7 @@
           <div class="carousel-item">
             <!--Mask color-->
             <div class="view">
-              <img class="d-block w-100" height="550" src="img/banner/img2.jpg" 
+              <img class="d-block w-100" height="750" src="img/banner/img2.jpg" 
                 alt="Second slide">
               <div class="mask rgba-black-strong"></div>
             </div>
@@ -43,7 +43,7 @@
           <div class="carousel-item">
             <!--Mask color-->
             <div class="view">
-              <img class="d-block w-100" height="550" src="img/banner/img3.jpg"
+              <img class="d-block w-100" height="750" src="img/banner/img3.jpg"
                 alt="Third slide">
               <div class="mask rgba-black-slight"></div>
             </div>
@@ -72,11 +72,10 @@
         <h3> Confira nossos carros </h3>
         <hr>
 
-
         <div class="card-deck">
 
           <?php
-            $tabela = funSelect('carros', '*', '');
+            $tabela = read('carros', '*', '');
 
             for($i=0; $i<count($tabela); $i++){
 
@@ -90,30 +89,37 @@
               $id=$tabela[$i]['id'];
           ?>
 
-          <!-- Card -->
-          <div class="card mb-4">
 
-            <!--Card image-->
-            <div class="view overlay">
-              <img class="card-img-top" src="<?php echo $imagem ?>" alt="Card image cap">
-              <a href="#!">
-                <div class="mask rgba-white-slight"></div>
-              </a>
+            <!-- Card -->
+            <div class="card mb-4">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="Card image cap">
+                <a href="#!">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <!--Card content-->
+              <div class="card-body">
+
+                <!--Title-->
+                <h4 class="card-title" style="min-height: 59px;"><?php echo $marca.' '.$modelo ?></h4>
+                <!--Text-->
+               
+                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                <button type="button" data-toggle="modal" data-target="#modalDetalhar<?php echo $i?>" class="btn btn-light-blue btn-md"><i class="fa fa-eye"></i> Detalhar</button>
+
+              </div>
             </div>
+            <!-- Card -->
 
-            <!--Card content-->
-            <div class="card-body">
 
-              <!--Title-->
-              <h4 class="card-title"><?php echo $marca.' '.$modelo ?></h4>
-              <!--Text-->
-             
-              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-              <button type="button" data-toggle="modal" data-target="#modalDetalhar<?php echo $i?>" class="btn btn-light-blue btn-md"><i class="fa fa-eye"></i> Detalhar</button>
 
-            </div>
-          </div>
-          <!-- Card -->
+         
+
+
 
           <!-- Modal Detalhar -->
             <div class="modal fade" id="modalDetalhar<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -178,8 +184,9 @@
             }
           ?>
 
-        </div>
-        <!-- Card deck -->
+      
+
+       
 
         
 
