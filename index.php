@@ -69,7 +69,7 @@
 
       <div class="container mt-5">
 
-        <h3> Confira nossos carros </h3>
+        <h3> Confira alguns dos nossos carros </h3>
         <hr>
 
         <div class="card-deck">
@@ -77,7 +77,7 @@
           <?php
             $tabela = read('carros', '*', '');
 
-            for($i=0; $i<count($tabela); $i++){
+            for($i=0; $i<3; $i++){
 
               $imagem=$tabela[$i]['imagem'];
               $marca=$tabela[$i]['marca'];
@@ -115,13 +115,7 @@
             </div>
             <!-- Card -->
 
-
-
-         
-
-
-
-          <!-- Modal Detalhar -->
+            <!-- Modal Detalhar -->
             <div class="modal fade" id="modalDetalhar<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
               <div class="modal-dialog modal-lg" role="document">
@@ -183,12 +177,114 @@
           <?php
             }
           ?>
+        </div>
 
-      
+        <div class="card-deck">
 
-       
+          <?php
+            $tabela = read('carros', '*', '');
 
-        
+            for($i=3; $i<6; $i++){
+
+              $imagem=$tabela[$i]['imagem'];
+              $marca=$tabela[$i]['marca'];
+              $modelo=$tabela[$i]['modelo'];
+              $ano=$tabela[$i]['ano'];
+              $cor=$tabela[$i]['cor'];
+              $cambio=$tabela[$i]['cambio'];
+              $valor_diaria=$tabela[$i]['valor_diaria'];
+              $id=$tabela[$i]['id'];
+          ?>
+
+
+            <!-- Card -->
+            <div class="card mb-4">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img class="card-img-top" src="<?php echo $imagem ?>" alt="Card image cap">
+                <a href="#!">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <!--Card content-->
+              <div class="card-body">
+
+                <!--Title-->
+                <h4 class="card-title" style=""><?php echo $marca.' '.$modelo ?></h4>
+                <!--Text-->
+               
+                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                <button type="button" data-toggle="modal" data-target="#modalDetalhar<?php echo $i?>" class="btn btn-light-blue btn-md"><i class="fa fa-eye"></i> Detalhar</button>
+
+              </div>
+            </div>
+            <!-- Card -->
+
+            <!-- Modal Detalhar -->
+            <div class="modal fade" id="modalDetalhar<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+              <div class="modal-dialog modal-lg" role="document">
+
+
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title w-100" id="myModalLabel">Detalhar Carro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <!-- Card -->
+                    <div class="card card-cascade wider reverse">
+
+                      <!-- Card image -->
+                      <div class="view view-cascade overlay">
+                        <img class="card-img-top mt-2" src="<?php echo $imagem ?>" style="width: 70%;margin: 0 auto;" alt="Card image cap">
+                        <a href="#!">
+                          <div class="mask rgba-white-slight"></div>
+                        </a>
+                      </div>
+
+                      <!-- Card content -->
+                      <div class="card-body card-body-cascade text-center">
+
+                        <!-- Title -->
+                        <h4 class="card-title"><strong><?php echo $marca ?></strong></h4>
+                        <!-- Subtitle -->
+                        <h6 class="font-weight-bold indigo-text py-2"><?php echo $modelo ?></h6>
+                        <!-- Text -->
+                        <p class="card-text">
+                          <strong>Ano: </strong> <?php echo $ano ?>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <strong>Cor: </strong> <?php echo $cor ?>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <strong>Câmbio: </strong> <?php echo $cambio ?>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <strong>Valor da Diária: </strong> R$ <?php echo $valor_diaria ?>
+                        </p>
+
+                        
+
+                      </div>
+
+                    </div>
+                    <!-- Card -->
+   
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <?php
+            }
+          ?>
+        </div>
 
       </div>
       

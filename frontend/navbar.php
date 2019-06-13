@@ -41,13 +41,13 @@
       </ul>
       <!-- Links -->
 
-      <!--
-      <form class="form-inline">
+      
+      <form class="form-inline" method="post" action="search.php">
         <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search">
+          <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" name="pesquisa" aria-label="Search">
         </div>
       </form>
-      -->
+      
     </div>
     <!-- Collapsible content -->
 

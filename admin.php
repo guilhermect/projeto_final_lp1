@@ -28,7 +28,7 @@
 
       //echo $valores;
 
-      $insert=insert("carros", $campos, $valores);
+      $insert=create("carros", $campos, $valores);
 
       if($insert){
         echo '<script> swal ( "Inserido com sucesso!" ,  "" ,  "success" ) </script>';
