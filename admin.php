@@ -22,7 +22,7 @@
       $cor=$_POST['cor'];
       $cambio=$_POST['cambio'];
       $valor_diaria=$_POST['valor_diaria'];
-      $imagem=$_POST['imagem'];
+      $imagem='img/carros/'.$_POST['imagem'];
 
       $valores="'$marca','$modelo',$ano,'$cor','$cambio',$valor_diaria,'$imagem'";
 
@@ -62,7 +62,7 @@
       $cor=$_POST['cor'];
       $cambio=$_POST['cambio'];
       $valor_diaria=$_POST['valor_diaria'];
-      $imagem=$_POST['imagem'];
+      $imagem='img/carros/'.$_POST['imagem'];
 
       $alteracoes="marca='$marca',modelo='$modelo',ano=$ano,cor='$cor',cambio='$cambio',valor_diaria=$valor_diaria,imagem='$imagem'";
 
@@ -289,7 +289,7 @@
                         <label>Imagem</label><br>
                         <img src="<?php echo $imagem ?>" width="200">
                         <br><br>
-                        <input type="text" class="form-control mb-4" value="<?php echo $imagem ?>" name="imagem">
+                        <input type="file" class="form-control mb-4" name="imagem">
 
                         <input type="hidden" name="id" value="<?php echo $id ?>">
 
@@ -319,7 +319,7 @@
 
     </div>  
 
-    
+    <!-- Formulario de Cadastro -->
     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
       <!-- Change class .modal-sm to change the size of the modal -->
@@ -379,7 +379,7 @@
                     </div>
                 </div>
                 <label style="float:left;">Imagem</label>
-                <input type="text" class="form-control mb-4" value="img/carros/" name="imagem">
+                <input type="file" class="form-control mb-4" name="imagem">
 
               
             

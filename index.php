@@ -4,6 +4,12 @@
     include_once 'CRUD.php';
   ?>
 
+  <style type="text/css">
+      img.card-img-top.card-index {
+          min-height: 240px;
+          max-height: 240px;
+      }
+  </style>
   <!-- Start your project here-->
   <div style="height: 80vh">
     <div class="">
@@ -95,7 +101,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo $imagem ?>" alt="Card image cap">
+                <img class="card-img-top card-index" src="<?php echo $imagem ?>" alt="Card image cap">
                 <a href="#!">
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -202,7 +208,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img class="card-img-top" src="<?php echo $imagem ?>" alt="Card image cap">
+                <img class="card-img-top card-index" src="<?php echo $imagem ?>" alt="Card image cap">
                 <a href="#!">
                   <div class="mask rgba-white-slight"></div>
                 </a>
